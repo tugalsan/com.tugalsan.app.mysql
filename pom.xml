@@ -11,7 +11,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <java_version>22</java_version>
+        <java_version>23</java_version>
 
         <!-- For all tomcat servers -->
         <tomcat_url>http://localhost:8080/manager/html</tomcat_url>
