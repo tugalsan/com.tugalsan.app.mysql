@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.jspmyadmin.app.database.export.controllers;
 
@@ -19,6 +19,7 @@ import com.jspmyadmin.framework.web.utils.RequestAdaptor;
 import com.jspmyadmin.framework.web.utils.RequestLevel;
 import com.jspmyadmin.framework.web.utils.View;
 import com.jspmyadmin.framework.web.utils.ViewType;
+import com.tugalsan.api.unsafe.client.TGS_UnSafe;
 
 /**
  * @author Yugandhar Gangu
@@ -28,50 +29,51 @@ import com.jspmyadmin.framework.web.utils.ViewType;
 @WebController(authentication = true, path = "/database_import.html", requestLevel = RequestLevel.DATABASE)
 public class DatabaseImportController {
 
-	@Detect
-	private RequestAdaptor requestAdaptor;
-	@Detect
-	private RedirectParams redirectParams;
-	@Detect
-	private View view;
-	@Model
-	private ImportBean bean;
+    @Detect
+    private RequestAdaptor requestAdaptor;
+    @Detect
+    private RedirectParams redirectParams;
+    @Detect
+    private View view;
+    @Model
+    private ImportBean bean;
 
-	@HandleGet
-	private void preImport() throws EncodingException {
+    @HandleGet
+    private void preImport() throws EncodingException {
 
-		bean.setToken(requestAdaptor.generateToken());
-		view.setType(ViewType.FORWARD);
-		view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT);
-	}
+        bean.setToken(requestAdaptor.generateToken());
+        view.setType(ViewType.FORWARD);
+        view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT);
+    }
 
-	@HandlePost
-	@ValidateToken
-	private void postImport() {
-		try {
-			if (bean.getImport_file() == null) {
-				redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_FILE_BLANK);
-				view.setType(ViewType.REDIRECT);
-				view.setPath(AppConstants.PATH_DATABASE_IMPORT);
-			} else if (!bean.getImport_file().getFileName().toLowerCase().endsWith(Constants.FILE_EXT_SQL)) {
-				redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_INVALID_FILE);
-				view.setType(ViewType.REDIRECT);
-				view.setPath(AppConstants.PATH_DATABASE_IMPORT);
-			} else if (bean.getImport_file().getFileSize() == 0) {
-				redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_FILE_EMPTY);
-				view.setType(ViewType.REDIRECT);
-				view.setPath(AppConstants.PATH_DATABASE_IMPORT);
-			} else {
-				bean.setToken(requestAdaptor.generateToken());
-				ImportLogic importLogic = new ImportLogic();
-				importLogic.importFile(bean);
-				view.setType(ViewType.FORWARD);
-				view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);
-			}
-		} catch (Exception e) {
-			bean.setError(e.getMessage());
-			view.setType(ViewType.FORWARD);
-			view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);
-		}
-	}
+    @HandlePost
+    @ValidateToken
+    private void postImport() {
+        try {
+            if (bean.getImport_file() == null) {
+                redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_FILE_BLANK);
+                view.setType(ViewType.REDIRECT);
+                view.setPath(AppConstants.PATH_DATABASE_IMPORT);
+            } else if (!bean.getImport_file().getFileName().toLowerCase().endsWith(Constants.FILE_EXT_SQL)) {
+                redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_INVALID_FILE);
+                view.setType(ViewType.REDIRECT);
+                view.setPath(AppConstants.PATH_DATABASE_IMPORT);
+            } else if (bean.getImport_file().getFileSize() == 0) {
+                redirectParams.put(Constants.ERR_KEY, AppConstants.MSG_IMPORT_FILE_EMPTY);
+                view.setType(ViewType.REDIRECT);
+                view.setPath(AppConstants.PATH_DATABASE_IMPORT);
+            } else {
+                bean.setToken(requestAdaptor.generateToken());
+                ImportLogic importLogic = new ImportLogic();
+                importLogic.importFile(bean);
+                view.setType(ViewType.FORWARD);
+                view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);
+            }
+        } catch (Exception e) {
+            TGS_UnSafe.throwIfInterruptedException(e);
+            bean.setError(e.getMessage());
+            view.setType(ViewType.FORWARD);
+            view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);
+        }
+    }
 }
