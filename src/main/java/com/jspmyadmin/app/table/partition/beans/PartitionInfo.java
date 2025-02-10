@@ -6,7 +6,7 @@ package com.jspmyadmin.app.table.partition.beans;
 import java.text.DecimalFormat;
 
 import com.jspmyadmin.framework.constants.BeanConstants;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -163,7 +163,7 @@ public class PartitionInfo {
                 return avg_row_length + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return avg_row_length;
     }
@@ -198,7 +198,7 @@ public class PartitionInfo {
                 return data_length + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return data_length;
     }

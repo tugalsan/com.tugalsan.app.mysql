@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.text.DecimalFormat;
 
 import com.jspmyadmin.framework.constants.BeanConstants;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -125,7 +125,7 @@ public class TableInfo implements Serializable {
                 return size + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return size;
     }

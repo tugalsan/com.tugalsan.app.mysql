@@ -14,7 +14,7 @@ import com.jspmyadmin.framework.constants.BeanConstants;
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.exception.EncodingException;
 import com.jspmyadmin.framework.web.logic.EncodeHelper;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -115,7 +115,7 @@ public class DatabaseInfo implements Serializable {
                 return data + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return data;
     }
@@ -150,7 +150,7 @@ public class DatabaseInfo implements Serializable {
                 return indexes + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return indexes;
     }
@@ -185,7 +185,7 @@ public class DatabaseInfo implements Serializable {
                 return total + BeanConstants._B;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return total;
     }
@@ -531,7 +531,7 @@ public class DatabaseInfo implements Serializable {
                     }
                 } catch (JSONException e) {
                 } catch (Exception e) {
-                    TGS_UnSafe.throwIfInterruptedException(e);
+                    TGS_FuncUtils.throwIfInterruptedException(e);
                 }
             }
         }

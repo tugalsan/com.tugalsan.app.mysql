@@ -11,7 +11,7 @@ import javax.servlet.jsp.PageContext;
 
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.taglib.support.AbstractSimpleTagSupport;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  *
@@ -120,7 +120,7 @@ public class FetchTag extends AbstractSimpleTagSupport {
                 return true;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return false;
     }

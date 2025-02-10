@@ -13,7 +13,7 @@ import com.jspmyadmin.app.common.logic.HomeLogic;
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.web.utils.Bean;
 import com.jspmyadmin.framework.web.utils.RequestAdaptor;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -57,7 +57,7 @@ public class HomeBean extends Bean {
 			homeLogic = new HomeLogic();
 			collation_map = homeLogic.getCollationMap();
 		} catch (Exception e) {
-                    TGS_UnSafe.throwIfInterruptedException(e);
+                    TGS_FuncUtils.throwIfInterruptedException(e);
 		} finally {
 			homeLogic = null;
 		}

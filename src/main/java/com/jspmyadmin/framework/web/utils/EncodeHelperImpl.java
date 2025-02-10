@@ -24,7 +24,7 @@ import org.apache.commons.codec.binary.Base64;
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.exception.EncodingException;
 import com.jspmyadmin.framework.web.logic.EncodeHelper;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -148,7 +148,7 @@ class EncodeHelperImpl implements EncodeHelper {
             session.setAttribute(Constants.SESSION_KEY, base64.encodeAsString(builder.toString().getBytes()));
             base64 = null;
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
     }
 

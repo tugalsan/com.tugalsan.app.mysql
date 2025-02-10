@@ -15,7 +15,7 @@ import com.jspmyadmin.framework.web.annotations.Rest;
 import com.jspmyadmin.framework.web.annotations.WebController;
 import com.jspmyadmin.framework.web.logic.EncodeHelper;
 import com.jspmyadmin.framework.web.utils.RequestLevel;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -69,7 +69,7 @@ public class SideBarController {
                 result = Constants.BLANK;
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
             result = Constants.BLANK;
         }
         return result;

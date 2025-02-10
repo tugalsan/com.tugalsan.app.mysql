@@ -33,7 +33,7 @@ import com.jspmyadmin.framework.constants.AppConstants;
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.exception.EncodingException;
 import com.jspmyadmin.framework.web.logic.EncodeHelper;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -141,7 +141,7 @@ public class DefaultServlet extends HttpServlet {
                         _LOGGER.log(Level.INFO, "Successfully Scanned Controllers. Controller Count: "
                                 + ControllerUtil.PATH_MAP.size());
                     } catch (Exception e) {
-                        TGS_UnSafe.throwIfInterruptedException(e);
+                        TGS_FuncUtils.throwIfInterruptedException(e);
                         _LOGGER.log(Level.WARNING, "Unable to Scan Controllers.", e);
                     }
                 }
@@ -329,7 +329,7 @@ public class DefaultServlet extends HttpServlet {
             } catch (IllegalArgumentException e) {
                 response.sendRedirect(request.getContextPath());
             } catch (Exception e) {
-                TGS_UnSafe.throwIfInterruptedException(e);
+                TGS_FuncUtils.throwIfInterruptedException(e);
                 session = request.getSession();
                 if (session != null && session.getAttribute(Constants.SESSION_CONNECT) != null) {
                     if (ConnectionFactory.isConfigured()) {

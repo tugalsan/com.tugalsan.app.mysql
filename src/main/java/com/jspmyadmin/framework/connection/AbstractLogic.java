@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import com.jspmyadmin.framework.constants.Constants;
 import com.jspmyadmin.framework.web.logic.EncodeHelper;
 import com.jspmyadmin.framework.web.utils.DefaultServlet;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -75,7 +75,7 @@ public abstract class AbstractLogic {
             Double.parseDouble(val);
             return true;
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return false;
     }
@@ -90,7 +90,7 @@ public abstract class AbstractLogic {
             Integer.parseInt(val);
             return true;
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return false;
     }

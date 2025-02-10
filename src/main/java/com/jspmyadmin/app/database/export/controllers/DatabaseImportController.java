@@ -19,7 +19,7 @@ import com.jspmyadmin.framework.web.utils.RequestAdaptor;
 import com.jspmyadmin.framework.web.utils.RequestLevel;
 import com.jspmyadmin.framework.web.utils.View;
 import com.jspmyadmin.framework.web.utils.ViewType;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -70,7 +70,7 @@ public class DatabaseImportController {
                 view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);
             }
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
             bean.setError(e.getMessage());
             view.setType(ViewType.FORWARD);
             view.setPath(AppConstants.JSP_DATABASE_EXPORT_IMPORT_RESULT);

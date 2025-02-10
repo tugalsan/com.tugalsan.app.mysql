@@ -3,7 +3,7 @@
  */
 package com.jspmyadmin.framework.web.utils;
 
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -100,7 +100,7 @@ public class MessageReader implements Messages {
                         messageMap.put(data[0].trim(), data[1].trim());
                     }
                 } catch (Exception e) {
-                    TGS_UnSafe.throwIfInterruptedException(e);
+                    TGS_FuncUtils.throwIfInterruptedException(e);
                     e.printStackTrace();
                 }
             }

@@ -28,7 +28,7 @@ import com.jspmyadmin.framework.web.annotations.WebController;
 import com.jspmyadmin.framework.web.utils.RequestLevel;
 import com.jspmyadmin.framework.web.utils.View;
 import com.jspmyadmin.framework.web.utils.ViewType;
-import com.tugalsan.api.unsafe.client.TGS_UnSafe;
+import com.tugalsan.api.function.client.TGS_FuncUtils;
 
 /**
  * @author Yugandhar Gangu
@@ -185,7 +185,7 @@ public class ExternalSqlController {
         try {
             return Integer.parseInt(val);
         } catch (Exception e) {
-            TGS_UnSafe.throwIfInterruptedException(e);
+            TGS_FuncUtils.throwIfInterruptedException(e);
         }
         return 0;
     }
