@@ -30,6 +30,14 @@ public class MessageReader implements Messages {
     private static final String _ENCODE = "UTF-8";
     private static final Map<String, Map<String, String>> _MESSAGEMAP = new ConcurrentHashMap<String, Map<String, String>>();
 
+    private static <T> ClassLoader getClassLoader(Class<T> clazz) {
+        var cl = clazz.getClassLoader();
+        if (cl == null) {
+            return Thread.currentThread().getContextClassLoader();
+        }
+        return cl;
+    }
+
     /**
      *
      */
@@ -46,7 +54,7 @@ public class MessageReader implements Messages {
         FilenameFilter filenameFilter = null;
         URI uri = null;
         try {
-            location = MessageReader.class.getClassLoader().getResource("");
+            location = getClassLoader(MessageReader.class).getResource("");
             uri = new URI(location.getPath() + "com/jspmyadmin/messages");
             directory = new File(uri.getPath());
             filenameFilter = new FilenameFilter() {
