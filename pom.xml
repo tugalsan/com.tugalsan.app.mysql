@@ -72,7 +72,7 @@
                 <version>3.14.0</version>
                 <configuration>
                     <fork>true</fork>
-                    <release>24</release><!--prop.jdk-->
+                    <release>25</release><!--prop.jdk-->
                 </configuration>
             </plugin>
 
