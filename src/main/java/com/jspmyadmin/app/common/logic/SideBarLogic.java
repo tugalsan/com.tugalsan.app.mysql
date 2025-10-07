@@ -3,8 +3,7 @@
  */
 package com.jspmyadmin.app.common.logic;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import module java.sql;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

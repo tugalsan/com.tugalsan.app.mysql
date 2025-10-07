@@ -4,7 +4,7 @@
 package com.jspmyadmin.app.common.controllers;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import module java.sql;
 
 import com.jspmyadmin.app.common.beans.InstallBean;
 import com.jspmyadmin.app.common.logic.InstallLogic;

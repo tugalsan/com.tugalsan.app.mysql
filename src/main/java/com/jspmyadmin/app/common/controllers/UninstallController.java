@@ -4,7 +4,7 @@
 package com.jspmyadmin.app.common.controllers;
 
 import java.io.IOException;
-import java.sql.SQLException;
+import module java.sql;
 
 import javax.servlet.http.HttpSession;
 
